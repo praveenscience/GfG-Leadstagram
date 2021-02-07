@@ -62,6 +62,10 @@ class App extends Component {
         {Network === "Phone" ? " " + Profile : null}
       </a>
     );
+    const users = this.state.Users.filter(
+      user =>
+        user.Name.toLowerCase().indexOf(this.state.Filter.toLowerCase()) > -1
+    );
     return (
       <div className="App">
         <Header dark={true} className="Header">
@@ -91,58 +95,69 @@ class App extends Component {
             </div>
           </div>
           <div className="row">
-            {this.state.Users.filter(
-              user =>
-                user.Name.toLowerCase().indexOf(
-                  this.state.Filter.toLowerCase()
-                ) > -1
-            ).map((user, key) => (
-              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3" key={key}>
-                <Card
-                  Image={
-                    user.Imgur
-                      ? "https://i.imgur.com/" + user.Imgur + "b.jpg"
-                      : "https://i.imgur.com/DKUR9Tkb.jpg"
-                  }
-                  ImgAlign="top"
-                  Header={user.Name}
-                  Title={
-                    user.WhatsApp ? (
-                      <Icon Network="Phone" Profile={user.WhatsApp} />
-                    ) : null
-                  }
-                >
-                  {user.Social.Facebook && (
-                    <Icon Network="Facebook" Profile={user.Social.Facebook} />
-                  )}
-                  {user.Social.Twitter && (
-                    <Icon Network="Twitter" Profile={user.Social.Twitter} />
-                  )}
-                  {user.Social.LinkedIn && (
-                    <Icon Network="LinkedIn" Profile={user.Social.LinkedIn} />
-                  )}
-                  {user.Social.Instagram && (
-                    <Icon Network="Instagram" Profile={user.Social.Instagram} />
-                  )}
-                  {user.Social.Quora && (
-                    <Icon Network="Quora" Profile={user.Social.Quora} />
-                  )}
-                  {user.Social.YouTube && (
-                    <Icon Network="YouTube" Profile={user.Social.YouTube} />
-                  )}
-                  {user.Social.Reddit && (
-                    <Icon Network="Reddit" Profile={user.Social.Reddit} />
-                  )}
-                  {user.Social.Website && (
-                    <Icon Network="Website" Profile={user.Social.Website} />
-                  )}
-                </Card>
+            {users.length === 0 ? (
+              <div className="col-12">
+                <div className="alert alert-danger text-center">
+                  Sorry, no users found.
+                </div>
               </div>
-            ))}
+            ) : (
+              users.map((user, key) => (
+                <div
+                  className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3"
+                  key={key}
+                >
+                  <Card
+                    Image={
+                      user.Imgur
+                        ? "https://i.imgur.com/" + user.Imgur + "b.jpg"
+                        : "https://i.imgur.com/DKUR9Tkb.jpg"
+                    }
+                    ImgAlign="top"
+                    Header={user.Name}
+                    Title={
+                      user.WhatsApp ? (
+                        <Icon Network="Phone" Profile={user.WhatsApp} />
+                      ) : null
+                    }
+                  >
+                    {user.Social.Facebook && (
+                      <Icon Network="Facebook" Profile={user.Social.Facebook} />
+                    )}
+                    {user.Social.Twitter && (
+                      <Icon Network="Twitter" Profile={user.Social.Twitter} />
+                    )}
+                    {user.Social.LinkedIn && (
+                      <Icon Network="LinkedIn" Profile={user.Social.LinkedIn} />
+                    )}
+                    {user.Social.Instagram && (
+                      <Icon
+                        Network="Instagram"
+                        Profile={user.Social.Instagram}
+                      />
+                    )}
+                    {user.Social.Quora && (
+                      <Icon Network="Quora" Profile={user.Social.Quora} />
+                    )}
+                    {user.Social.YouTube && (
+                      <Icon Network="YouTube" Profile={user.Social.YouTube} />
+                    )}
+                    {user.Social.Reddit && (
+                      <Icon Network="Reddit" Profile={user.Social.Reddit} />
+                    )}
+                    {user.Social.Website && (
+                      <Icon Network="Website" Profile={user.Social.Website} />
+                    )}
+                  </Card>
+                </div>
+              ))
+            )}
           </div>
         </div>
         <pre className="m-5 border radius bg-light">
           Total Users: {this.state.Users.length + "\n"}
+          Filtered Users: {users.length + "\n"}
+          {JSON.stringify(users, null, 2)}
           {JSON.stringify(this.state, null, 2)}
         </pre>
       </div>
