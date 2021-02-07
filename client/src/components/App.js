@@ -65,6 +65,25 @@ class App extends Component {
         </Header>
         <div className="container-fluid">
           <div className="row">
+            <div className="col-12">
+              <Card className="mb-3" Header="Filter">
+                <form action="">
+                  <div className="form-group m-0">
+                    <label htmlFor="enterName" className="sr-only">
+                      Enter Name
+                    </label>
+                    <input
+                      type="text"
+                      id="enterName"
+                      className="form-control"
+                      placeholder="Enter Name"
+                    />
+                  </div>
+                </form>
+              </Card>
+            </div>
+          </div>
+          <div className="row">
             {this.state.Users.map((user, key) => (
               <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
                 <Card
@@ -111,6 +130,10 @@ class App extends Component {
             ))}
           </div>
         </div>
+        <pre className="m-5 border radius bg-light">
+          Total Users: {this.state.Users.length + "\n"}
+          {JSON.stringify(this.state, null, 2)}
+        </pre>
       </div>
     );
   }
