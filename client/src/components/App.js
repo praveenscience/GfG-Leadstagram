@@ -76,7 +76,37 @@ class App extends Component {
                   ImgAlign="top"
                   key={key}
                   Header={user.Name}
-                ></Card>
+                  Title={
+                    user.WhatsApp ? (
+                      <Icon Network="Phone" Profile={user.WhatsApp} />
+                    ) : null
+                  }
+                >
+                  {user.Social.Facebook && (
+                    <Icon Network="Facebook" Profile={user.Social.Facebook} />
+                  )}
+                  {user.Social.Twitter && (
+                    <Icon Network="Twitter" Profile={user.Social.Twitter} />
+                  )}
+                  {user.Social.LinkedIn && (
+                    <Icon Network="LinkedIn" Profile={user.Social.LinkedIn} />
+                  )}
+                  {user.Social.Instagram && (
+                    <Icon Network="Instagram" Profile={user.Social.Instagram} />
+                  )}
+                  {user.Social.Quora && (
+                    <Icon Network="Quora" Profile={user.Social.Quora} />
+                  )}
+                  {user.Social.YouTube && (
+                    <Icon Network="YouTube" Profile={user.Social.YouTube} />
+                  )}
+                  {user.Social.Reddit && (
+                    <Icon Network="Reddit" Profile={user.Social.Reddit} />
+                  )}
+                  {user.Social.Website && (
+                    <Icon Network="Website" Profile={user.Social.Website} />
+                  )}
+                </Card>
               </div>
             ))}
           </div>
