@@ -87,7 +87,7 @@ class App extends Component {
           </div>
           <div className="row">
             {this.state.Users.map((user, key) => (
-              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
+              <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3" key={key}>
                 <Card
                   Image={
                     user.Imgur
@@ -95,7 +95,7 @@ class App extends Component {
                       : "https://i.imgur.com/DKUR9Tkb.jpg"
                   }
                   ImgAlign="top"
-                  key={key}
+                  
                   Header={user.Name}
                   Title={
                     user.WhatsApp ? (
