@@ -29,7 +29,9 @@ const UserList = ({ Icon, Users, Filter }) => {
         >
           {Object.keys(user.Social).map(
             nw =>
-              user.Social[nw] && <Icon Network={nw} Profile={user.Social[nw]} />
+              user.Social[nw] && (
+                <Icon Network={nw} Profile={user.Social[nw]} key={nw} />
+              )
           )}
         </Card>
       </div>
