@@ -9,8 +9,7 @@ class App extends Component {
     Filter: ""
   };
   handleFilterChange = e => {
-    console.log(e.target.value);
-    console.log(e.target.name);
+    this.setState({ Filter: e.target.value });
   };
   componentDidMount() {
     this.setState({ Users });
