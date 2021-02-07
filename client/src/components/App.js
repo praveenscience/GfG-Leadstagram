@@ -4,6 +4,7 @@ import Users from "../constants/Users";
 import Card from "./Card";
 import Icon from "./Icon";
 import Search from "./Search";
+import UserList from "./UserList";
 
 class App extends Component {
   state = {
@@ -35,42 +36,7 @@ class App extends Component {
             />
           </div>
           <div className="row">
-            {users.length === 0 ? (
-              <div className="col-12">
-                <div className="alert alert-danger text-center">
-                  Sorry, no users found.
-                </div>
-              </div>
-            ) : (
-              users.map((user, key) => (
-                <div
-                  className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3"
-                  key={key}
-                >
-                  <Card
-                    Image={
-                      user.Imgur
-                        ? "https://i.imgur.com/" + user.Imgur + "b.jpg"
-                        : "https://i.imgur.com/DKUR9Tkb.jpg"
-                    }
-                    ImgAlign="top"
-                    Header={user.Name}
-                    Title={
-                      user.WhatsApp ? (
-                        <Icon Network="Phone" Profile={user.WhatsApp} />
-                      ) : null
-                    }
-                  >
-                    {Object.keys(user.Social).map(
-                      nw =>
-                        user.Social[nw] && (
-                          <Icon Network={nw} Profile={user.Social[nw]} />
-                        )
-                    )}
-                  </Card>
-                </div>
-              ))
-            )}
+            <UserList users={users} Card={Card} Icon={Icon} />
           </div>
         </div>
       </div>
