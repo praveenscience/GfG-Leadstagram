@@ -21,7 +21,11 @@ class App extends Component {
             {this.state.Users.map((user, key) => (
               <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3">
                 <Card
-                  Image={"https://i.imgur.com/" + user.Imgur + "b.jpg"}
+                  Image={
+                    user.Imgur
+                      ? "https://i.imgur.com/" + user.Imgur + "b.jpg"
+                      : "https://i.imgur.com/DKUR9Tkb.jpg"
+                  }
                   ImgAlign="top"
                   key={key}
                   Header={user.Name}
