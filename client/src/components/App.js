@@ -91,7 +91,9 @@ class App extends Component {
             </div>
           </div>
           <div className="row">
-            {this.state.Users.map((user, key) => (
+            {this.state.Users.filter(
+              user => user.Name.indexOf(this.state.Filter) > -1
+            ).map((user, key) => (
               <div className="col-12 col-md-6 col-lg-4 col-xl-3 mb-3" key={key}>
                 <Card
                   Image={
