@@ -154,12 +154,6 @@ class App extends Component {
             )}
           </div>
         </div>
-        <pre className="m-5 border radius bg-light">
-          Total Users: {this.state.Users.length + "\n"}
-          Filtered Users: {users.length + "\n"}
-          {JSON.stringify(users, null, 2)}
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
       </div>
     );
   }
