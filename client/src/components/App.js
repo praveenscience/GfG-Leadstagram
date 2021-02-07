@@ -8,6 +8,10 @@ class App extends Component {
     Users: [],
     Filter: ""
   };
+  handleFilterChange = e => {
+    console.log(e.target.value);
+    console.log(e.target.name);
+  };
   componentDidMount() {
     this.setState({ Users });
   }
@@ -75,10 +79,12 @@ class App extends Component {
                     </label>
                     <input
                       type="text"
+                      name="enterName"
                       id="enterName"
                       className="form-control"
                       placeholder="Enter Name"
                       value={this.state.Filter}
+                      onChange={this.handleFilterChange}
                     />
                   </div>
                 </form>
@@ -95,7 +101,6 @@ class App extends Component {
                       : "https://i.imgur.com/DKUR9Tkb.jpg"
                   }
                   ImgAlign="top"
-                  
                   Header={user.Name}
                   Title={
                     user.WhatsApp ? (
