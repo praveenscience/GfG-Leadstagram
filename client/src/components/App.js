@@ -75,32 +75,11 @@ class App extends Component {
                       ) : null
                     }
                   >
-                    {user.Social.Facebook && (
-                      <Icon Network="Facebook" Profile={user.Social.Facebook} />
-                    )}
-                    {user.Social.Twitter && (
-                      <Icon Network="Twitter" Profile={user.Social.Twitter} />
-                    )}
-                    {user.Social.LinkedIn && (
-                      <Icon Network="LinkedIn" Profile={user.Social.LinkedIn} />
-                    )}
-                    {user.Social.Instagram && (
-                      <Icon
-                        Network="Instagram"
-                        Profile={user.Social.Instagram}
-                      />
-                    )}
-                    {user.Social.Quora && (
-                      <Icon Network="Quora" Profile={user.Social.Quora} />
-                    )}
-                    {user.Social.YouTube && (
-                      <Icon Network="YouTube" Profile={user.Social.YouTube} />
-                    )}
-                    {user.Social.Reddit && (
-                      <Icon Network="Reddit" Profile={user.Social.Reddit} />
-                    )}
-                    {user.Social.Website && (
-                      <Icon Network="Website" Profile={user.Social.Website} />
+                    {Object.keys(user.Social).map(
+                      nw =>
+                        user.Social[nw] && (
+                          <Icon Network={nw} Profile={user.Social[nw]} />
+                        )
                     )}
                   </Card>
                 </div>
