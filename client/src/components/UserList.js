@@ -1,4 +1,7 @@
-const UserList = ({ Card, Icon, users }) => {
+const UserList = ({ Card, Icon, Users, Filter }) => {
+  const users = Users.filter(
+    user => user.Name.toLowerCase().indexOf(Filter.toLowerCase()) > -1
+  );
   return users.length === 0 ? (
     <div className="col-12">
       <div className="alert alert-danger text-center">

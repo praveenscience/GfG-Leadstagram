@@ -18,10 +18,6 @@ class App extends Component {
     this.setState({ Users });
   }
   render() {
-    const users = this.state.Users.filter(
-      user =>
-        user.Name.toLowerCase().indexOf(this.state.Filter.toLowerCase()) > -1
-    );
     return (
       <div className="App">
         <Header dark={true} className="Header">
@@ -36,7 +32,12 @@ class App extends Component {
             />
           </div>
           <div className="row">
-            <UserList users={users} Card={Card} Icon={Icon} />
+            <UserList
+              Users={this.state.Users}
+              Filter={this.state.Filter}
+              Card={Card}
+              Icon={Icon}
+            />
           </div>
         </div>
       </div>
