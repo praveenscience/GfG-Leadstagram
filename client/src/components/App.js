@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { GetUsers } from "../services/Users";
 import Header from "./Header";
 import Icon from "./Icon";
 import Search from "./Search";
@@ -13,9 +14,7 @@ class App extends Component {
     this.setState({ Filter: e.target.value });
   };
   componentDidMount() {
-    fetch("/api/users.json")
-      .then(res => res.json())
-      .then(Users => this.setState({ Users }));
+    GetUsers().then(Users => this.setState({ Users }));
   }
   render() {
     return (
