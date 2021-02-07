@@ -1,1 +1,4 @@
-export const GetUsers = () => fetch("/api/users.json").then(res => res.json());
+import axios from "axios";
+import Axios from "axios";
+
+export const GetUsers = () => Axios.get("/api/users.json");
