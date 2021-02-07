@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import Users from "../constants/Users";
 import Icon from "./Icon";
 import Search from "./Search";
 import UserList from "./UserList";
@@ -14,7 +13,9 @@ class App extends Component {
     this.setState({ Filter: e.target.value });
   };
   componentDidMount() {
-    this.setState({ Users });
+    fetch("/api/users.json")
+      .then(res => res.json())
+      .then(Users => this.setState({ Users }));
   }
   render() {
     return (
