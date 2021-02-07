@@ -1,4 +1,6 @@
-const Search = ({ Card, Filter, handleFilterChange }) => {
+import Card from "./Card";
+
+const Search = ({ Filter, handleFilterChange }) => {
   return (
     <div className="col-12">
       <Card className="mb-3" Header="Filter">

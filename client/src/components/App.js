@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Users from "../constants/Users";
-import Card from "./Card";
 import Icon from "./Icon";
 import Search from "./Search";
 import UserList from "./UserList";
@@ -26,7 +25,6 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <Search
-              Card={Card}
               Filter={this.state.Filter}
               handleFilterChange={this.handleFilterChange}
             />
@@ -35,7 +33,6 @@ class App extends Component {
             <UserList
               Users={this.state.Users}
               Filter={this.state.Filter}
-              Card={Card}
               Icon={Icon}
             />
           </div>

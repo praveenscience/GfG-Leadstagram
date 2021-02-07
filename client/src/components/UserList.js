@@ -1,4 +1,6 @@
-const UserList = ({ Card, Icon, Users, Filter }) => {
+import Card from "./Card";
+
+const UserList = ({ Icon, Users, Filter }) => {
   const users = Users.filter(
     user => user.Name.toLowerCase().indexOf(Filter.toLowerCase()) > -1
   );
