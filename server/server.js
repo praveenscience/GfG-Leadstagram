@@ -5,6 +5,7 @@ const port = 3100;
 
 // All the middlewares.
 app.use(morgan("dev"));
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json("Welcome to API Server!");
@@ -14,7 +15,7 @@ app.get("/:param", (req, res) => {
   res.json(`Welcome to API Server, ${req.params.param}!`);
 });
 
-app.post(["/", "/:Name", "/:Profile/:Username"], express.json(), (req, res) => {
+app.post(["/", "/:Name", "/:Profile/:Username"], (req, res) => {
   res.json({
     Message: "I am in the post!",
     Params: req.params,
