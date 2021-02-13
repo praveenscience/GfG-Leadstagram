@@ -14,5 +14,8 @@
     "Leadstagram"
   ],
   "author": "Me only",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
