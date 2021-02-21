@@ -27,7 +27,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header dark={true} className="Header">
+        <Header
+          dark={true}
+          className="Header"
+          items={[
+            <button className="btn btn-primary btn-sm">Login</button>,
+            <button className="btn btn-primary btn-sm ml-3">Register</button>
+          ]}
+        >
           Leadstagram
         </Header>
         <div className="container-fluid">
