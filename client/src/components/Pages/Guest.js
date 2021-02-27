@@ -29,8 +29,21 @@ class Guest extends Component {
     return (
       <div className="Guest">
         <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <Route
+            path="/login"
+            render={() => (
+              <Login Values={this.state.Login} updateForm={this.updateForm} />
+            )}
+          />
+          <Route
+            path="/register"
+            render={() => (
+              <Register
+                Values={this.state.Register}
+                updateForm={this.updateForm}
+              />
+            )}
+          />
           <Route path="/" exact={true} component={Welcome} />
           <Route>
             <div className="NotFound">
