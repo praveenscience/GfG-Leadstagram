@@ -15,6 +15,11 @@ const GuestCardHelper = ({ Title, FormElements, children }) => {
                   FormElements.map((fg, key) => (
                     <FormGroup {...fg} key={key} />
                   ))}
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value={Title}
+                />
               </form>
             </Card>
           </div>
