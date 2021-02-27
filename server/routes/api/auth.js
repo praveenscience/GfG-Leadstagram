@@ -27,6 +27,8 @@ app.post("/login", (req, res) => {
     delete match.Password;
     req.session.User = match;
     res.status(`Successfully logged in as ${match.FullName}!`);
+  } else {
+    res.status(401).json(`Username and Password doesn't match.`);
   }
 });
 // Update existing user
