@@ -49,7 +49,11 @@ class App extends Component {
         >
           Leadstagram
         </Header>
-        {this.state.LoggedIn ? <Home /> : <Guest />}
+        {this.state.LoggedIn ? (
+          <Home />
+        ) : (
+          <Guest setLoggedIn={this.setLoggedIn} />
+        )}
       </div>
     );
   }

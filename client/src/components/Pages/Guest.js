@@ -55,6 +55,7 @@ class Guest extends Component {
           const LoggedInUser = res.data
             .replace("Successfully logged in as ", "")
             .slice(0, -1);
+          this.props.setLoggedIn(LoggedInUser);
         }
       })
       .catch(err => {
