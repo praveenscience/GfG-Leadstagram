@@ -3,6 +3,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import Welcome from "../Login/Welcome";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
+import { LoginUser } from "../../services/Auth";
 
 const InitState = {
   Login: {
@@ -54,6 +55,16 @@ class Guest extends Component {
   handleLogin = e => {
     e.preventDefault();
     const { Email: Username, Password } = this.state.Login;
+    LoginUser(Username, Password)
+      .then(res => console.log(res))
+      .catch(err => {
+        this.setState({
+          Login: {
+            ...this.state.Login,
+            Error: err.response.data
+          }
+        });
+      });
   };
   render() {
     return (
