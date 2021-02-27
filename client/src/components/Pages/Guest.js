@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import Welcome from "../Login/Welcome";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
@@ -30,6 +30,15 @@ class Guest extends Component {
       FullName: ""
     }
   };
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      const { Login, Register } = InitState;
+      this.setState({
+        Login,
+        Register
+      });
+    }
+  }
   updateForm = (Form, Field, Value) => {
     this.setState({
       [Form]: {
@@ -78,4 +87,4 @@ class Guest extends Component {
   }
 }
 
-export default Guest;
+export default withRouter(Guest);
