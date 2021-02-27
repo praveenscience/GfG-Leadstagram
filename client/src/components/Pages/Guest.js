@@ -4,6 +4,19 @@ import Welcome from "../Login/Welcome";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
 
+const InitState = {
+  Login: {
+    Email: "",
+    Password: ""
+  },
+  Register: {
+    Email: "",
+    Password: "",
+    ConfPass: "",
+    FullName: ""
+  }
+};
+
 class Guest extends Component {
   state = {
     Login: {
@@ -25,6 +38,11 @@ class Guest extends Component {
       }
     });
   };
+  clearForm = Form => {
+    this.setState({
+      [Form]: InitState[Form]
+    });
+  };
   render() {
     return (
       <div className="Guest">
@@ -32,7 +50,11 @@ class Guest extends Component {
           <Route
             path="/login"
             render={() => (
-              <Login Values={this.state.Login} updateForm={this.updateForm} />
+              <Login
+                Values={this.state.Login}
+                updateForm={this.updateForm}
+                clearForm={this.clearForm}
+              />
             )}
           />
           <Route
@@ -41,6 +63,7 @@ class Guest extends Component {
               <Register
                 Values={this.state.Register}
                 updateForm={this.updateForm}
+                clearForm={this.clearForm}
               />
             )}
           />
