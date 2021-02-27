@@ -4,7 +4,7 @@ import fe from "./FormElements";
 
 const Login = () => {
   return (
-    <GuestCardHelper Title="Login" FormElements={[fe.Email, fe.Password]} />
+    <GuestCardHelper Title="Sign In" FormElements={[fe.Email, fe.Password]} />
   );
 };
 
