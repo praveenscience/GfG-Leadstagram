@@ -8,40 +8,34 @@ import { LoginUser } from "../../services/Auth";
 const InitState = {
   Login: {
     Email: "",
-    Password: "",
-    Error: ""
+    Password: ""
   },
   Register: {
     Email: "",
     Password: "",
     ConfPass: "",
-    FullName: "",
-    Error: ""
-  }
+    FullName: ""
+  },
+  Error: null
 };
 
 class Guest extends Component {
   state = {
     Login: {
       Email: "",
-      Password: "",
-      Error: ""
+      Password: ""
     },
     Register: {
       Email: "",
       Password: "",
       ConfPass: "",
-      FullName: "",
-      Error: ""
-    }
+      FullName: ""
+    },
+    Error: null
   };
   componentDidUpdate(prevProps) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
-      const { Login, Register } = InitState;
-      this.setState({
-        Login,
-        Register
-      });
+      this.setState(InitState);
     }
   }
   updateForm = (Form, Field, Value) => {
@@ -59,16 +53,22 @@ class Guest extends Component {
       .then(res => console.log(res))
       .catch(err => {
         this.setState({
-          Login: {
-            ...this.state.Login,
-            Error: err.response.data
-          }
+          Error: err.response.data
         });
       });
   };
   render() {
     return (
       <div className="Guest">
+        {this.state.Error && (
+          <div className="container">
+            <div className="row">
+              <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                <div className="alert alert-danger">{this.state.Error}</div>
+              </div>
+            </div>
+          </div>
+        )}
         <Switch>
           <Route
             path="/login"
