@@ -50,7 +50,13 @@ class Guest extends Component {
     e.preventDefault();
     const { Email: Username, Password } = this.state.Login;
     LoginUser(Username, Password)
-      .then(res => console.log(res))
+      .then(res => {
+        if (res.status === 200) {
+          const LoggedInUser = res.data
+            .replace("Successfully logged in as ", "")
+            .slice(0, -1);
+        }
+      })
       .catch(err => {
         this.setState({
           Error: err.response.data
