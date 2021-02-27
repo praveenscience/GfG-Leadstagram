@@ -3,9 +3,6 @@ import GuestCardHelper from "./_Card";
 import fe from "./FormElements";
 
 const Register = ({ Values, updateForm, clearForm }) => {
-  useEffect(() => {
-    clearForm("Login");
-  });
   const formElements = [fe.Email, fe.Password, fe.ConfPass, fe.FullName].map(
     el => ({
       ...el,

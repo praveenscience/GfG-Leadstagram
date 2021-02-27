@@ -38,11 +38,6 @@ class Guest extends Component {
       }
     });
   };
-  clearForm = Form => {
-    this.setState({
-      [Form]: InitState[Form]
-    });
-  };
   render() {
     return (
       <div className="Guest">
@@ -50,11 +45,7 @@ class Guest extends Component {
           <Route
             path="/login"
             render={() => (
-              <Login
-                Values={this.state.Login}
-                updateForm={this.updateForm}
-                clearForm={this.clearForm}
-              />
+              <Login Values={this.state.Login} updateForm={this.updateForm} />
             )}
           />
           <Route
@@ -63,7 +54,6 @@ class Guest extends Component {
               <Register
                 Values={this.state.Register}
                 updateForm={this.updateForm}
-                clearForm={this.clearForm}
               />
             )}
           />
