@@ -17,6 +17,14 @@ class Guest extends Component {
       FullName: ""
     }
   };
+  updateForm = (Form, Field, Value) => {
+    this.setState({
+      [Form]: {
+        ...this.state[Form],
+        [Field]: Value
+      }
+    });
+  };
   render() {
     return (
       <div className="Guest">
