@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Header from "./Bootstrap/Header";
 import Guest from "./Pages/Guest";
 import Home from "./Pages/Home";
@@ -13,19 +14,25 @@ class App extends Component {
         <Header
           dark={true}
           className="Header"
+          to="/"
+          Link={Link}
           items={
             this.state.LoggedIn
-              ? [<button className="btn btn-danger btn-sm">Sign Out</button>]
+              ? [
+                  <Link to="/logout" className="btn btn-danger btn-sm">
+                    Sign Out
+                  </Link>
+                ]
               : [
-                  <button className="btn btn-primary btn-sm ml-3">
+                  <Link to="/" className="btn btn-primary btn-sm ml-3">
                     Welcome
-                  </button>,
-                  <button className="btn btn-primary btn-sm ml-3">
+                  </Link>,
+                  <Link to="/login" className="btn btn-primary btn-sm ml-3">
                     Sign In
-                  </button>,
-                  <button className="btn btn-primary btn-sm ml-3">
+                  </Link>,
+                  <Link to="/register" className="btn btn-primary btn-sm ml-3">
                     Register
-                  </button>
+                  </Link>
                 ]
           }
         >
