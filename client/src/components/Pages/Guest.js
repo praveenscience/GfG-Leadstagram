@@ -7,13 +7,15 @@ import Register from "../Login/Register";
 const InitState = {
   Login: {
     Email: "",
-    Password: ""
+    Password: "",
+    Error: ""
   },
   Register: {
     Email: "",
     Password: "",
     ConfPass: "",
-    FullName: ""
+    FullName: "",
+    Error: ""
   }
 };
 
@@ -21,13 +23,15 @@ class Guest extends Component {
   state = {
     Login: {
       Email: "",
-      Password: ""
+      Password: "",
+      Error: ""
     },
     Register: {
       Email: "",
       Password: "",
       ConfPass: "",
-      FullName: ""
+      FullName: "",
+      Error: ""
     }
   };
   componentDidUpdate(prevProps) {
@@ -47,6 +51,10 @@ class Guest extends Component {
       }
     });
   };
+  handleLogin = e => {
+    e.preventDefault();
+    const { Email: Username, Password } = this.state.Login;
+  };
   render() {
     return (
       <div className="Guest">
@@ -54,7 +62,11 @@ class Guest extends Component {
           <Route
             path="/login"
             render={() => (
-              <Login Values={this.state.Login} updateForm={this.updateForm} />
+              <Login
+                Values={this.state.Login}
+                updateForm={this.updateForm}
+                handleLogin={this.handleLogin}
+              />
             )}
           />
           <Route
