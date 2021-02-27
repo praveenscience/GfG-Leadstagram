@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Bootstrap/Card";
 import FormGroup from "../Bootstrap/FormGroup";
 
-const GuestCardHelper = ({ Title, FormElements, children }) => {
+const GuestCardHelper = ({ Title, FormElements, children, onSubmit }) => {
   return (
     <div className={Title}>
       <div className="container">
@@ -10,7 +10,7 @@ const GuestCardHelper = ({ Title, FormElements, children }) => {
           <div className="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
             <Card Header={Title}>
               {children}
-              <form>
+              <form onSubmit={onSubmit}>
                 {FormElements &&
                   FormElements.map((fg, key) => (
                     <FormGroup {...fg} key={key} />
