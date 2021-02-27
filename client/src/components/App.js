@@ -17,7 +17,12 @@ class App extends Component {
             this.state.LoggedIn
               ? [<button className="btn btn-danger btn-sm">Sign Out</button>]
               : [
-                  <button className="btn btn-primary btn-sm">Sign In</button>,
+                  <button className="btn btn-primary btn-sm ml-3">
+                    Welcome
+                  </button>,
+                  <button className="btn btn-primary btn-sm ml-3">
+                    Sign In
+                  </button>,
                   <button className="btn btn-primary btn-sm ml-3">
                     Register
                   </button>
