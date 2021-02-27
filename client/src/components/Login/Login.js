@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GuestCardHelper from "./_Card";
 import fe from "./FormElements";
 
-const Login = ({ Values, updateForm }) => {
+const Login = ({ Values, updateForm, clearForm }) => {
+  useEffect(() => {
+    clearForm("Login");
+  });
   const formElements = [fe.Email, fe.Password].map(el => ({
     ...el,
     Value: Values[el.Id],
