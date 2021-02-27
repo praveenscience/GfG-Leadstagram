@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../Bootstrap/Card";
 
 const Search = ({ Filter, handleFilterChange }) => {
   return (
