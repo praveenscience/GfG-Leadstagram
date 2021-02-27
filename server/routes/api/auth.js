@@ -3,12 +3,12 @@ const app = express.Router();
 
 const users = [
   {
-    Username: "Praveen",
+    Username: "Praveen@gfg.com",
     Password: "Praveen@123",
     FullName: "Praveen Kumar"
   },
   {
-    Username: "Abhishek",
+    Username: "Abhishek@gfg.com",
     Password: "Abhishek@123",
     FullName: "Abhishek Kumar"
   }
