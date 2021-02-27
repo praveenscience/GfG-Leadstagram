@@ -1,9 +1,14 @@
 import React from "react";
+import Welcome from "../Login/Welcome";
+import Login from "../Login/Login";
+import Register from "../Login/Register";
 
 const Guest = () => {
   return (
     <div className="Guest">
-      <p>Login Page</p>
+      <Welcome />
+      <Login />
+      <Register />
     </div>
   );
 };
