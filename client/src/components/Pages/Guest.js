@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Welcome from "../Login/Welcome";
 import Login from "../Login/Login";
 import Register from "../Login/Register";
@@ -7,9 +7,16 @@ import Register from "../Login/Register";
 const Guest = () => {
   return (
     <div className="Guest">
-      <Route path="/" exact={true} component={Welcome} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/" exact={true} component={Welcome} />
+        <Route>
+          <div className="NotFound">
+            <p>Not Found</p>
+          </div>
+        </Route>
+      </Switch>
     </div>
   );
 };
