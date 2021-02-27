@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ dark, children, className, items }) => {
+const Header = ({ dark, children, className, items, to, Link }) => {
   dark = !!dark ? "dark" : "light";
   return (
     <nav
@@ -10,7 +10,13 @@ const Header = ({ dark, children, className, items }) => {
         (items && items.length ? " navbar-expand-lg" : "")
       }
     >
-      <span className="navbar-brand">{children}</span>
+      {to ? (
+        <Link to={to} className="navbar-brand">
+          {children}
+        </Link>
+      ) : (
+        <span className="navbar-brand">{children}</span>
+      )}
       {items && items.length > 0 && (
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
