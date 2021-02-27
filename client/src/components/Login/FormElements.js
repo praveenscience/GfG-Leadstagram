@@ -1,4 +1,4 @@
-export default {
+const FormElements = {
   Email: {
     Id: "Email",
     Label: "Email",
@@ -24,3 +24,4 @@ export default {
     Desc: "Please enter your full name here."
   }
 };
+export default FormElements;
