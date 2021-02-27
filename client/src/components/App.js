@@ -8,6 +8,13 @@ class App extends Component {
   state = {
     LoggedIn: false
   };
+  setLoggedIn = LoggedIn => {
+    this.setState({ LoggedIn });
+  };
+  handleLogout = e => {
+    e.preventDefault();
+    this.setLoggedIn(false);
+  };
   render() {
     return (
       <div className="App">
@@ -19,7 +26,11 @@ class App extends Component {
           items={
             this.state.LoggedIn
               ? [
-                  <Link to="/logout" className="btn btn-danger btn-sm">
+                  <Link
+                    to="/logout"
+                    className="btn btn-danger btn-sm"
+                    onClick={this.handleLogout}
+                  >
                     Sign Out
                   </Link>
                 ]
