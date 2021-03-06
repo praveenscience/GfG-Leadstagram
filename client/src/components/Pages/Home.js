@@ -7,7 +7,8 @@ import UserList from "../Users/UserList";
 class Home extends Component {
   state = {
     Users: [],
-    Filter: ""
+    Filter: "",
+    AJAXCall: false
   };
   handleFilterChange = e => {
     this.setState({ Filter: e.target.value });
@@ -19,7 +20,8 @@ class Home extends Component {
         Users: Object.keys(res.data).map(Slug => ({
           ...res.data[Slug],
           Slug
-        }))
+        })),
+        AJAXCall: true
       })
     );
   }
@@ -38,6 +40,7 @@ class Home extends Component {
               Users={this.state.Users}
               Filter={this.state.Filter}
               Icon={Icon}
+              AJAXCall={this.state.AJAXCall}
             />
           </div>
         </div>

@@ -1,13 +1,17 @@
 import Card from "../Bootstrap/Card";
 
-const UserList = ({ Icon, Users, Filter }) => {
+const UserList = ({ Icon, Users, Filter, AJAXCall }) => {
   const users = Users.filter(
     user => user.Name.toLowerCase().indexOf(Filter.toLowerCase()) > -1
   );
   return users.length === 0 ? (
     <div className="col-12">
-      <div className="alert alert-danger text-center">
-        Sorry, no users found.
+      <div
+        className={
+          "alert alert-" + (AJAXCall ? "danger" : "warning") + " text-center"
+        }
+      >
+        {AJAXCall ? "Sorry, no users found." : "Loading..."}
       </div>
     </div>
   ) : (
