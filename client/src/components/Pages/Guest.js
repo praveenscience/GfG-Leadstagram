@@ -16,7 +16,8 @@ const InitState = {
     ConfPass: "",
     FullName: ""
   },
-  Error: null
+  Error: null,
+  AJAXCall: false
 };
 
 class Guest extends Component {
@@ -31,7 +32,8 @@ class Guest extends Component {
       ConfPass: "",
       FullName: ""
     },
-    Error: null
+    Error: null,
+    AJAXCall: false
   };
   componentDidUpdate(prevProps) {
     if (prevProps.location.pathname !== this.props.location.pathname) {
@@ -46,16 +48,23 @@ class Guest extends Component {
       }
     });
   };
+  handleAJAX = AJAXCall => {
+    this.setState({
+      AJAXCall
+    });
+  };
   handleLogin = e => {
     e.preventDefault();
     const { Email: Username, Password } = this.state.Login;
     const { setLoggedIn, history } = this.props;
+    this.handleAJAX(true);
     LoginUser(Username, Password)
       .then(res => {
         if (res.status === 200) {
           const LoggedInUser = res.data
             .replace("Successfully logged in as ", "")
             .slice(0, -1);
+          this.handleAJAX(false);
           setLoggedIn(LoggedInUser);
           history.push("/");
         }
@@ -64,6 +73,9 @@ class Guest extends Component {
         this.setState({
           Error: err.response.data
         });
+      })
+      .then(() => {
+        this.handleAJAX(false);
       });
   };
   render() {
@@ -86,6 +98,7 @@ class Guest extends Component {
                 Values={this.state.Login}
                 updateForm={this.updateForm}
                 handleLogin={this.handleLogin}
+                AJAXCall={this.state.AJAXCall}
               />
             )}
           />
@@ -95,6 +108,7 @@ class Guest extends Component {
               <Register
                 Values={this.state.Register}
                 updateForm={this.updateForm}
+                AJAXCall={this.state.AJAXCall}
               />
             )}
           />

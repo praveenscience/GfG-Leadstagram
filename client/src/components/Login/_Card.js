@@ -2,7 +2,13 @@ import React from "react";
 import Card from "../Bootstrap/Card";
 import FormGroup from "../Bootstrap/FormGroup";
 
-const GuestCardHelper = ({ Title, FormElements, children, onSubmit }) => {
+const GuestCardHelper = ({
+  Title,
+  FormElements,
+  children,
+  onSubmit,
+  AJAXCall
+}) => {
   return (
     <div className={Title}>
       <div className="container">
@@ -19,7 +25,13 @@ const GuestCardHelper = ({ Title, FormElements, children, onSubmit }) => {
                   className="btn btn-primary"
                   type="submit"
                   value={Title}
+                  disabled={AJAXCall}
                 />
+                {AJAXCall && (
+                  <span className="ml-2 badge badge-warning">
+                    {Title === "Sign In" ? "Logging in..." : "Registering..."}
+                  </span>
+                )}
               </form>
             </Card>
           </div>
