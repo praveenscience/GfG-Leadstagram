@@ -26,6 +26,9 @@ class App extends Component {
           items={
             this.state.LoggedIn
               ? [
+                  <span className="d-inline-block pr-3 pt-1 text-white user-info">
+                    Welcome {this.state.LoggedIn}
+                  </span>,
                   <Link
                     to="/logout"
                     className="btn btn-danger btn-sm"
