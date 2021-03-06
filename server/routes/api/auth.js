@@ -28,10 +28,15 @@ app.post("/login", (req, res) => {
     req.session.User = match;
     res.json(`Successfully logged in as ${match.FullName}!`);
   } else {
-    res.status(401).json(`Username and Password doesn't match.`);
+    res.status(401).json("Username and Password doesn't match.");
   }
 });
-// Update existing user
-// Delete existing user
+app.get("/login", (req, res) => {
+  if (typeof req.session.User !== "object") {
+    res.status(403).json("No one signed in.");
+  } else {
+    res.json(req.session.User);
+  }
+});
 
 module.exports = app;
