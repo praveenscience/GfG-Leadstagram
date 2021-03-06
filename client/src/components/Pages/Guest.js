@@ -103,15 +103,6 @@ class Guest extends Component {
             </div>
           </Route>
         </Switch>
-        <div className="container">
-          <div className="row">
-            <div className="col-8 offset-2 mt-3">
-              <pre className="rounded border bg-light p-2">
-                {JSON.stringify(this.state, null, 2)}
-              </pre>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
