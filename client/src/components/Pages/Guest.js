@@ -73,6 +73,11 @@ class Guest extends Component {
         this.setState({
           Error: err.response.data
         });
+        setTimeout(() => {
+          this.setState({
+            Error: null
+          });
+        }, 5000);
       })
       .then(() => {
         this.handleAJAX(false);
