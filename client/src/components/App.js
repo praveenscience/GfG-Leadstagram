@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { GetCurrentUser, LogoutUser } from "../services/Auth";
 import Header from "./Bootstrap/Header";
 import Guest from "./Pages/Guest";
@@ -26,6 +26,7 @@ class App extends Component {
           this.setState({
             LoggedIn: res.data.FullName
           });
+          this.props.history.push("/");
         }
       })
       .catch(() => {})
@@ -95,4 +96,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
