@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { GetCurrentUser } from "../services/Auth";
+import { GetCurrentUser, LogoutUser } from "../services/Auth";
 import Header from "./Bootstrap/Header";
 import Guest from "./Pages/Guest";
 import Home from "./Pages/Home";
@@ -14,7 +14,9 @@ class App extends Component {
   };
   handleLogout = e => {
     e.preventDefault();
-    this.setLoggedIn(false);
+    LogoutUser().then(() => {
+      this.setLoggedIn(false);
+    });
   };
   componentDidMount() {
     GetCurrentUser().then(res => {

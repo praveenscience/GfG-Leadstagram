@@ -38,5 +38,10 @@ app.get("/login", (req, res) => {
     res.json(req.session.User);
   }
 });
+app.post("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.status(204).json("");
+  });
+});
 
 module.exports = app;
