@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { GetCurrentUser } from "../services/Auth";
 import Header from "./Bootstrap/Header";
 import Guest from "./Pages/Guest";
 import Home from "./Pages/Home";
@@ -15,6 +16,15 @@ class App extends Component {
     e.preventDefault();
     this.setLoggedIn(false);
   };
+  componentDidMount() {
+    GetCurrentUser().then(res => {
+      if (res.status === 200) {
+        this.setState({
+          LoggedIn: res.data.FullName
+        });
+      }
+    });
+  }
   render() {
     return (
       <div className="App">
