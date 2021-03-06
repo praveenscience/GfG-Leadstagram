@@ -49,13 +49,15 @@ class Guest extends Component {
   handleLogin = e => {
     e.preventDefault();
     const { Email: Username, Password } = this.state.Login;
+    const { setLoggedIn, history } = this.props;
     LoginUser(Username, Password)
       .then(res => {
         if (res.status === 200) {
           const LoggedInUser = res.data
             .replace("Successfully logged in as ", "")
             .slice(0, -1);
-          this.props.setLoggedIn(LoggedInUser);
+          setLoggedIn(LoggedInUser);
+          history.push("/");
         }
       })
       .catch(err => {
