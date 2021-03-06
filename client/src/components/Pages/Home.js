@@ -14,16 +14,20 @@ class Home extends Component {
     this.setState({ Filter: e.target.value });
   };
   componentDidMount() {
-    GetUsers().then(res =>
-      this.setState({
-        RawData: res.data,
-        Users: Object.keys(res.data).map(Slug => ({
-          ...res.data[Slug],
-          Slug
-        })),
-        AJAXCall: true
-      })
-    );
+    GetUsers()
+      .then(res =>
+        this.setState({
+          RawData: res.data,
+          Users: Object.keys(res.data).map(Slug => ({
+            ...res.data[Slug],
+            Slug
+          }))
+        })
+      )
+      .catch(() => {})
+      .then(() => {
+        this.setState({ AJAXCall: true });
+      });
   }
   render() {
     return (
